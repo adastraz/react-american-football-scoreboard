@@ -1,7 +1,8 @@
 //TODO: STEP 1 - Import the useState hook.
-import React, { useState } from "react";
-import "./App.css";
-import BottomRow from "./BottomRow";
+import React, { useState } from "react"
+import "./App.css"
+import BottomRow from "./BottomRow"
+import Score from './components/Score.js'
 
 
 function App() {
@@ -19,17 +20,17 @@ function App() {
 
   let homeScoreClick = () => {
     console.log('homeScoreClick')
-    setHomeScore(homeScore+6)
+    setHomeScore(homeScore+7)
   }
   let awayScoreClick = () => {
     console.log('homeScoreClick')
-    setAwayScore(awayScore+6)
+    setAwayScore(awayScore+7)
   }
   let homeFgClick = () => {
-    setHomeScore(homeScore+1)
+    setHomeScore(homeScore+3)
   }
   let awayFgClick = () => {
-    setAwayScore(awayScore+1)
+    setAwayScore(awayScore+3)
   }
 
   return (
@@ -52,35 +53,20 @@ function App() {
         <BottomRow />
       </section>
       <section className="buttons">
-        <div className="homeButtons">
-          {/* TODO STEP 4 - Now we need to attach our state setter functions to click listeners. */}
-          <button 
-          className="homeButtons__touchdown"
-          onClick = {homeScoreClick}
-          >
-            Home Touchdown
-          </button>
-          <button 
-          className="homeButtons__fieldGoal"
-          onClick = {homeFgClick}
-          >
-            Home Field Goal
-          </button>
-        </div>
-        <div className="awayButtons">
-          <button 
-          className="awayButtons__touchdown"
-          onClick = {awayScoreClick}
-          >
-            Away Touchdown
-          </button>
-          <button 
-          className="awayButtons__fieldGoal"
-          onClick = {awayFgClick}
-          >
-            Away Field Goal
-          </button>
-        </div>
+        <Score 
+        Score={homeScoreClick} 
+        Goal={homeFgClick}
+        home={'homeButtons'}
+        firstClassName={'__touchdown'}
+        side={'Home'}
+        />
+        <Score 
+        Score={awayScoreClick} 
+        Goal={awayFgClick}
+        home={'awayButtons'}
+        firstClassName={'__touchdown'}
+        side={'Away'}
+        />
       </section>
     </div>
   );
